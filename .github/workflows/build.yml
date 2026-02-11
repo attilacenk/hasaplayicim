@@ -17,12 +17,17 @@ jobs:
       with:
         python-version: '3.9'
     
-    - name: Install Java
+    - name: Install Java and Android Tools
       run: |
         sudo apt-get update
         sudo apt-get install -y openjdk-11-jdk
+        sudo apt-get install -y android-sdk-build-tools android-sdk
     
-    - name: Install Dependencies
+    - name: Install System Dependencies
+      run: |
+        sudo apt-get install -y build-essential python3-dev libjpeg-dev zlib1g-dev libssl-dev
+    
+    - name: Install Python Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install buildozer cython
